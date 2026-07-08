@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GorJess Studios — Booth & Suite Rental Application</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500;600&display=swap');
+
+  :root{
+    --black:#000000;
+    --white:#ffffff;
+    --cream:#F5F2EB;
+    --gold:#BEA262;
+    --pink:#D5266D;
+    --text-secondary:#5a5a56;
+    --border:#e2ddd0;
+    --radius:2px;
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0;}
+
+  body{
+    background:var(--cream);
+    font-family:'Jost',sans-serif;
+    color:var(--black);
+    line-height:1.6;
+    padding:0 0 80px;
+  }
+
+  .wrap{max-width:640px;margin:0 auto;padding:0 20px;}
+
+  /* HEADER */
+  .header{
+    background:var(--black);
+    color:var(--white);
+    text-align:center;
+    padding:56px 20px 44px;
+    position:relative;
+  }
+  .header::after{
+    content:"";
+    position:absolute;
+    bottom:0;left:50%;
+    transform:translateX(-50%);
+    width:60px;height:2px;
+    background:var(--gold);
+  }
+  .studio-name{
+    font-family:'Cormorant Garamond',serif;
+    font-size:38px;
+    font-weight:500;
+    letter-spacing:0.04em;
+  }
+  .studio-tagline{
+    font-size:11px;
+    letter-spacing:0.28em;
+    text-transform:uppercase;
+    color:var(--gold);
+    margin-top:10px;
+  }
+  .studio-loc{
+    font-size:12px;
+    color:#b8b8b3;
+    letter-spacing:0.08em;
+    margin-top:6px;
+  }
+
+  /* INTRO */
+  .intro{padding:44px 0 8px;}
+  .intro h1{
+    font-family:'Cormorant Garamond',serif;
+    font-size:28px;
+    font-weight:500;
+    margin-bottom:12px;
+  }
+  .intro p{
+    font-size:14px;
+    color:var(--text-secondary);
+    max-width:520px;
+  }
+  .pill-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px;}
+  .pill{
+    font-size:11px;
+    letter-spacing:0.04em;
+    border:1px solid var(--border);
+    background:var(--white);
+    padding:7px 14px;
+    border-radius:20px;
+    color:var(--black);
+  }
+  .pill strong{color:var(--pink);}
+
+  .promo-banner{
+    margin-top:22px;
+    background:var(--black);
+    color:var(--white);
+    padding:22px 22px 20px;
+    border-radius:var(--radius);
+    border-left:3px solid var(--gold);
+  }
+  .promo-title{
+    font-family:'Cormorant Garamond',serif;
+    font-size:19px;
+    color:var(--gold);
+    letter-spacing:0.02em;
+  }
+  .promo-text{
+    font-size:13px;
+    color:#d8d8d3;
+    margin-top:8px;
+    line-height:1.6;
+    max-width:460px;
+  }
+  .promo-perks{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;}
+  .perk{
+    font-size:10.5px;
+    letter-spacing:0.03em;
+    border:1px solid #3a3a3a;
+    padding:6px 12px;
+    border-radius:20px;
+    color:var(--white);
+  }
+
+  /* SECTION LABEL */
+  .sec{margin-top:44px;}
+  .sec-num{
+    font-family:'Cormorant Garamond',serif;
+    font-style:italic;
+    color:var(--gold);
+    font-size:13px;
+    letter-spacing:0.1em;
+  }
+  .sec-title{
+    font-size:19px;
+    font-weight:500;
+    margin-top:2px;
+    margin-bottom:6px;
+  }
+  .sec-sub{font-size:13px;color:var(--text-secondary);margin-bottom:18px;}
+  hr.divider{border:none;border-top:1px solid var(--border);margin:44px 0 0;}
+
+  /* SPACE CARDS */
+  .space-cards{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+  @media(max-width:520px){.space-cards{grid-template-columns:1fr;}}
+  .space-card{
+    background:var(--white);
+    border:1.5px solid var(--border);
+    border-radius:var(--radius);
+    padding:20px 18px;
+    cursor:pointer;
+    transition:border-color .15s;
+    position:relative;
+  }
+  .space-card input{position:absolute;opacity:0;}
+  .space-card.selected{border-color:var(--black);}
+  .space-card.selected::before{
+    content:"✓";
+    position:absolute;top:14px;right:14px;
+    width:18px;height:18px;
+    background:var(--black);color:var(--white);
+    font-size:10px;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .sc-label{font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);}
+  .sc-name{font-family:'Cormorant Garamond',serif;font-size:24px;margin:6px 0 2px;}
+  .sc-rate{font-size:14px;color:var(--black);}
+  .sc-rate span{color:var(--text-secondary);font-size:12px;}
+  .sc-total{font-size:11px;color:var(--text-secondary);margin-top:8px;}
+  .term-notice{
+    margin-top:14px;
+    background:var(--white);
+    border-left:2px solid var(--gold);
+    padding:12px 16px;
+    font-size:12.5px;
+    color:var(--text-secondary);
+  }
+
+  /* FORM ELEMENTS */
+  .field{margin-bottom:20px;}
+  .field label{
+    display:block;
+    font-size:12px;
+    letter-spacing:0.03em;
+    color:var(--black);
+    margin-bottom:7px;
+    font-weight:500;
+  }
+  .field .hint{font-weight:400;color:var(--text-secondary);font-size:11.5px;display:block;margin-top:3px;}
+  input[type="text"],input[type="tel"],input[type="email"],input[type="number"],select,textarea{
+    width:100%;
+    padding:12px 14px;
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+    background:var(--white);
+    font-family:'Jost',sans-serif;
+    font-size:14px;
+    color:var(--black);
+  }
+  input:focus,select:focus,textarea:focus{outline:none;border-color:var(--black);}
+  textarea{resize:vertical;min-height:70px;}
+  .row2{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+  @media(max-width:520px){.row2{grid-template-columns:1fr;}}
+
+  .radio-row{display:flex;gap:10px;flex-wrap:wrap;}
+  .radio-chip{
+    border:1px solid var(--border);
+    background:var(--white);
+    padding:9px 16px;
+    border-radius:20px;
+    font-size:13px;
+    cursor:pointer;
+    position:relative;
+  }
+  .radio-chip input{position:absolute;opacity:0;}
+  .radio-chip.selected{background:var(--black);color:var(--white);border-color:var(--black);}
+
+  .days-grid{display:flex;gap:6px;flex-wrap:wrap;}
+  .day-chip{
+    width:42px;height:42px;
+    border:1px solid var(--border);
+    background:var(--white);
+    border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    font-size:11px;
+    cursor:pointer;
+    position:relative;
+  }
+  .day-chip input{position:absolute;opacity:0;}
+  .day-chip.selected{background:var(--pink);color:var(--white);border-color:var(--pink);}
+
+  /* AGREEMENT BLOCK */
+  .terms-box{
+    background:var(--white);
+    border:1px solid var(--border);
+    padding:20px;
+    border-radius:var(--radius);
+    margin-top:8px;
+  }
+  .terms-box ul{padding-left:18px;margin-top:8px;}
+  .terms-box li{font-size:12.5px;color:var(--text-secondary);margin-bottom:6px;}
+  .agree-row{display:flex;gap:10px;align-items:flex-start;margin-top:16px;}
+  .agree-row:first-of-type{margin-top:0;}
+  .agree-row input{margin-top:3px;accent-color:var(--black);width:15px;height:15px;flex-shrink:0;}
+  .agree-row label{font-size:12.5px;color:var(--text-secondary);line-height:1.55;}
+
+  /* SUBMIT */
+  .submit-btn{
+    width:100%;
+    padding:16px;
+    background:var(--black);
+    color:var(--white);
+    border:none;
+    border-radius:var(--radius);
+    font-family:'Jost',sans-serif;
+    font-size:13px;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    cursor:pointer;
+    margin-top:36px;
+    transition:opacity .15s;
+  }
+  .submit-btn:hover{opacity:0.85;}
+  .submit-note{text-align:center;font-size:11.5px;color:var(--text-secondary);margin-top:12px;}
+
+  /* SUCCESS */
+  .success-box{display:none;text-align:center;padding:80px 20px;}
+  .success-icon{width:52px;height:52px;border-radius:50%;background:var(--black);color:var(--white);display:flex;align-items:center;justify-content:center;font-size:22px;margin:0 auto 20px;}
+  .success-box h2{font-family:'Cormorant Garamond',serif;font-size:26px;margin-bottom:10px;}
+  .success-box p{font-size:13.5px;color:var(--text-secondary);max-width:380px;margin:0 auto;}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="studio-name">GorJess Studios</div>
+  <div class="studio-tagline">Made to be noticed.</div>
+  <div class="studio-loc">Walls, Mississippi</div>
+</div>
+
+<div class="wrap">
+
+  <div id="form-body">
+
+    <div class="intro">
+      <h1>Booth & Suite Rental Application</h1>
+      <p>GorJess Studios is a private salon suite space built for beauty professionals ready to grow their brand with structure and consistency. Complete the application below — we'll follow up within 48 hours.</p>
+      <div class="pill-row">
+        <span class="pill">12-month lease</span>
+        <span class="pill"><strong>$125</strong>/wk booth</span>
+        <span class="pill"><strong>$175</strong>/wk suite</span>
+        <span class="pill">Saturday auto-draft</span>
+      </div>
+      <div class="promo-banner">
+        <div class="promo-title">Move-In Special — Ends July 31st</div>
+        <div class="promo-text">Week 1 free. Week 2 at $100. Regular rate begins week 3. Built to give you time to grow your brand before you're paying full price.</div>
+        <div class="promo-perks">
+          <span class="perk">1 set of business cards</span>
+          <span class="perk">1 promotional flyer</span>
+          <span class="perk">1 logo shirt for Saturdays</span>
+        </div>
+      </div>
+    </div>
+
+    <form id="rentalForm" action="https://formspree.io/f/mvzynqog" method="POST">
+
+      <hr class="divider">
+      <div class="sec">
+        <div class="sec-num">01</div>
+        <div class="sec-title">Choose your space</div>
+        <div class="sec-sub">Both options are a 12-month lease term.</div>
+
+        <div class="space-cards">
+          <label class="space-card" id="card-booth" onclick="selectSpace('booth')">
+            <input type="radio" name="space_type" value="Booth - $125/week">
+            <div class="sc-label">Booth</div>
+            <div class="sc-name">Booth Lease</div>
+            <div class="sc-rate">$125 <span>/ week</span></div>
+          </label>
+          <label class="space-card" id="card-suite" onclick="selectSpace('suite')">
+            <input type="radio" name="space_type" value="Suite - $175/week">
+            <div class="sc-label">Suite</div>
+            <div class="sc-name">Suite Lease</div>
+            <div class="sc-rate">$175 <span>/ week</span></div>
+          </label>
+        </div>
+
+        <div class="term-notice">
+          A $150 refundable security deposit is due at signing. Weekly rent is auto-drafted via Square every Saturday by 7:00 PM. Deposit is refunded upon completing the full 12-month term in good standing. Move-in special pricing (see above) applies to signed applications received by <strong>July 31st</strong> — regular weekly rate applies after.
+        </div>
+      </div>
+
+      <hr class="divider">
+      <div class="sec">
+        <div class="sec-num">02</div>
+        <div class="sec-title">Your info</div>
+
+        <div class="field">
+          <label for="full_name">Full name</label>
+          <input type="text" id="full_name" name="full_name" required>
+        </div>
+
+        <div class="row2">
+          <div class="field">
+            <label for="phone">Phone number</label>
+            <input type="tel" id="phone" name="phone" required>
+          </div>
+          <div class="field">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+        </div>
+
+        <div class="row2">
+          <div class="field">
+            <label for="specialty">Specialty</label>
+            <select id="specialty" name="specialty" required>
+              <option value="">Select one</option>
+              <option>Hair Stylist</option>
+              <option>Braider</option>
+              <option>Barber</option>
+              <option>Lash Tech</option>
+              <option>Nail Tech</option>
+              <option>Esthetician / Skin</option>
+              <option>Makeup Artist</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="instagram">Instagram / social handle</label>
+            <input type="text" id="instagram" name="instagram" placeholder="@yourbrand">
+          </div>
+        </div>
+      </div>
+
+      <hr class="divider">
+      <div class="sec">
+        <div class="sec-num">03</div>
+        <div class="sec-title">Your business</div>
+        <div class="sec-sub">Helps us understand where you're at right now.</div>
+
+        <div class="field">
+          <label for="weekly_clients">Average clients served per week</label>
+          <select id="weekly_clients" name="weekly_clients" required>
+            <option value="">Select one</option>
+            <option>1–5</option>
+            <option>6–10</option>
+            <option>11–15</option>
+            <option>16+</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label>Do you have an established clientele you'll bring with you?
+            <span class="hint">This doesn't disqualify you — we just want to know what to expect.</span>
+          </label>
+          <div class="radio-row">
+            <label class="radio-chip" onclick="selectChip(this,'clientele_group')"><input type="radio" name="has_clientele" value="Yes, established clientele">Yes, established</label>
+            <label class="radio-chip" onclick="selectChip(this,'clientele_group')"><input type="radio" name="has_clientele" value="Building clientele">Still building</label>
+            <label class="radio-chip" onclick="selectChip(this,'clientele_group')"><input type="radio" name="has_clientele" value="Starting fresh">Starting fresh</label>
+          </div>
+        </div>
+      </div>
+
+      <hr class="divider">
+      <div class="sec">
+        <div class="sec-num">04</div>
+        <div class="sec-title">Availability</div>
+
+        <div class="field">
+          <label>Days you plan to work</label>
+          <div class="days-grid">
+            <label class="day-chip" onclick="toggleDay(this)"><input type="checkbox" name="days[]" value="Sun">Su</label>
+            <label class="day-chip" onclick="toggleDay(this)"><input type="checkbox" name="days[]" value="Mon">M</label>
+            <label class="day-chip" onclick="toggleDay(this)"><input type="checkbox" name="days[]" value="Tue">Tu</label>
+            <label class="day-chip" onclick="toggleDay(this)"><input type="checkbox" name="days[]" value="Wed">W</label>
+            <label class="day-chip" onclick="toggleDay(this)"><input type="checkbox" name="days[]" value="Thu">Th</label>
+            <label class="day-chip" onclick="toggleDay(this)"><input type="checkbox" name="days[]" value="Fri">F</label>
+            <label class="day-chip" onclick="toggleDay(this)"><input type="checkbox" name="days[]" value="Sat">Sa</label>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="start_date">Preferred move-in date</label>
+          <input type="text" id="start_date" name="start_date" placeholder="MM/DD/YYYY">
+        </div>
+      </div>
+
+      <hr class="divider">
+      <div class="sec">
+        <div class="sec-num">05</div>
+        <div class="sec-title">Lease agreement</div>
+
+        <div class="terms-box">
+          <ul>
+            <li>12-month lease term, weekly rent due every Saturday by 7:00 PM via Square auto-draft.</li>
+            <li>$150 refundable security deposit due at signing.</li>
+            <li>Move-in special (applications signed by July 31st): week 1 free, week 2 at $100, regular weekly rate begins week 3.</li>
+            <li>No proration for partial weeks.</li>
+          </ul>
+
+          <div class="agree-row">
+            <input type="checkbox" id="agree_term" name="agree_term" value="Agrees to 12-month lease term" required>
+            <label for="agree_term">I understand this is a 12-month lease commitment.</label>
+          </div>
+          <div class="agree-row">
+            <input type="checkbox" id="agree_payment" name="agree_payment" value="Agrees to Saturday Square auto-draft" required>
+            <label for="agree_payment">I agree to weekly rent payment via Square auto-draft every Saturday by 7:00 PM.</label>
+          </div>
+          <div class="agree-row">
+            <input type="checkbox" id="agree_rules" name="agree_rules" value="Agrees to house rules and code of conduct" required>
+            <label for="agree_rules">I agree to abide by the GorJess Studios house rules and code of conduct.</label>
+          </div>
+        </div>
+      </div>
+
+      <button type="submit" class="submit-btn">Submit application</button>
+      <div class="submit-note">We'll review your application and follow up within 48 hours.</div>
+    </form>
+  </div>
+
+  <div class="success-box" id="successBox">
+    <div class="success-icon">✓</div>
+    <h2>Application received</h2>
+    <p>Thank you for applying to GorJess Studios. We'll be in touch within 48 hours to discuss next steps.</p>
+  </div>
+
+</div>
+
+<script>
+function selectSpace(type){
+  document.getElementById('card-booth').classList.remove('selected');
+  document.getElementById('card-suite').classList.remove('selected');
+  document.getElementById('card-' + type).classList.add('selected');
+  document.getElementById('card-' + type).querySelector('input').checked = true;
+}
+function selectChip(el, group){
+  el.parentElement.querySelectorAll('.radio-chip').forEach(c => c.classList.remove('selected'));
+  el.classList.add('selected');
+  el.querySelector('input').checked = true;
+}
+function toggleDay(el){
+  el.classList.toggle('selected');
+  const input = el.querySelector('input');
+  input.checked = !input.checked;
+}
+
+document.getElementById('rentalForm').addEventListener('submit', function(e){
+  e.preventDefault();
+  const form = e.target;
+  const data = new FormData(form);
+  fetch(form.action, {
+    method: 'POST',
+    body: data,
+    headers: { 'Accept': 'application/json' }
+  }).then(response => {
+    if(response.ok){
+      document.getElementById('form-body').style.display = 'none';
+      document.getElementById('successBox').style.display = 'block';
+      window.scrollTo(0,0);
+    } else {
+      alert('Something went wrong — please try again or text us directly.');
+    }
+  }).catch(() => {
+    alert('Something went wrong — please try again or text us directly.');
+  });
+});
+</script>
+
+</body>
+</html>
