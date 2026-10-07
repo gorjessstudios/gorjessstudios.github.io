@@ -1,0 +1,305 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Spotlight Saturdays | GorJess Studios</title>
+<meta name="description" content="A community series at GorJess Studios amplifying local businesses. Launching October 31. Sign up in under a minute.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,500;0,6..96,700;1,6..96,500&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  /* Layout: black stage hero with oversized Didot headline, white working section for the form.
+     Pink and gold stay under 10% of the page: one gold rule, one pink button. */
+  :root {
+    --black: #0b0b0b;
+    --white: #ffffff;
+    --paper: #f6f4f3;
+    --gray: #6b6666;
+    --line: #d9d4d2;
+    --pink: #e8a6b8;
+    --gold: #c9a45c;
+    --display: "Didot", "Bodoni Moda", "Bodoni 72", Georgia, serif;
+    --body: "Avenir Next", "Avenir", "Nunito Sans", "Helvetica Neue", Arial, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--white);
+    color: var(--black);
+    font-family: var(--body);
+    font-size: 17px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; }
+  .wrap { width: 100%; max-width: 1040px; margin-inline: auto; padding-inline: 22px; }
+  .label {
+    font-size: 12px; font-weight: 700; letter-spacing: .22em; text-transform: uppercase;
+  }
+
+  /* HERO */
+  .hero { background: var(--black); color: var(--white); padding-block: 28px 64px; }
+  .top { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; padding-bottom: 48px; }
+  .top .label { color: var(--white); }
+  .top a.nav { font-size: 13px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; text-decoration: none; border-bottom: 1px solid var(--gold); padding-bottom: 2px; }
+  .hero h1 {
+    font-family: var(--display); font-weight: 700; font-size: clamp(3.4rem, 15vw, 8.5rem);
+    line-height: .92; letter-spacing: -.02em; margin: 0 0 28px; text-wrap: balance;
+  }
+  .hero h1 em { font-style: italic; font-weight: 500; display: block; }
+  .rule { width: 64px; height: 2px; background: var(--gold); border: 0; margin: 0 0 24px; }
+  .hero p.lede { font-size: clamp(1.05rem, 3.6vw, 1.3rem); max-width: 34rem; margin: 0 0 32px; color: #e9e5e3; }
+  .meta { display: grid; gap: 18px; grid-template-columns: 1fr; margin-bottom: 36px; }
+  @media (min-width: 640px) { .meta { grid-template-columns: repeat(3, auto); justify-content: start; gap: 48px; } }
+  .meta div span { display: block; font-size: 12px; letter-spacing: .2em; text-transform: uppercase; color: #a8a2a0; font-weight: 700; }
+  .meta div strong { font-family: var(--display); font-size: 1.35rem; font-weight: 500; }
+  .btn {
+    display: inline-block; background: var(--pink); color: var(--black); border: 0; cursor: pointer;
+    font-family: var(--body); font-size: 15px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase;
+    padding: 18px 30px; text-decoration: none; min-height: 52px;
+  }
+  .btn:hover { background: var(--white); }
+  .btn:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible, a:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
+
+  .hero-grid { display: grid; gap: 40px; align-items: start; }
+  .hero-copy { min-width: 0; }
+  .flyer { margin: 0; min-width: 0; }
+  .flyer img { display: block; width: 100%; max-width: 440px; height: auto; margin-inline: auto; border: 1px solid #2a2a2a; }
+  @media (min-width: 900px) {
+    .hero-grid { grid-template-columns: 1.15fr .85fr; gap: 56px; align-items: center; }
+    .hero h1 { font-size: clamp(3.4rem, 8vw, 6.4rem); }
+    .flyer img { max-width: 100%; }
+  }
+
+  /* WHAT IT IS */
+  section.pad { padding-block: 72px; }
+  h2 { font-family: var(--display); font-weight: 700; font-size: clamp(2rem, 7vw, 3.2rem); line-height: 1.05; margin: 14px 0 22px; text-wrap: balance; letter-spacing: -.01em; }
+  .intro { display: grid; gap: 28px; }
+  @media (min-width: 800px) { .intro { grid-template-columns: 1fr 1fr; gap: 64px; } }
+  .intro p { margin: 0 0 16px; max-width: 34rem; }
+  .gets { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--black); }
+  .gets li { padding: 18px 0; border-bottom: 1px solid var(--line); display: grid; gap: 2px; }
+  .gets li strong { font-family: var(--display); font-size: 1.3rem; font-weight: 700; }
+  .gets li span { color: var(--gray); }
+
+  /* HOW IT WORKS */
+  .how { background: var(--paper); }
+  .steps { list-style: none; margin: 32px 0 0; padding: 0; display: grid; gap: 28px; counter-reset: s; }
+  @media (min-width: 800px) { .steps { grid-template-columns: repeat(3, 1fr); gap: 40px; } }
+  .steps li { counter-increment: s; border-top: 2px solid var(--black); padding-top: 16px; }
+  .steps li::before { content: counter(s); font-family: var(--display); font-size: 2.6rem; font-weight: 700; display: block; line-height: 1; margin-bottom: 8px; }
+  .steps strong { display: block; font-size: 1.05rem; margin-bottom: 4px; }
+  .steps span { color: var(--gray); }
+
+  /* FORM */
+  .signup { background: var(--black); color: var(--white); }
+  .signup h2 { color: var(--white); }
+  .signup .sub { color: #cfc9c7; max-width: 32rem; margin: 0 0 32px; }
+  form { display: grid; gap: 22px; max-width: 640px; }
+  .row { display: grid; gap: 22px; }
+  @media (min-width: 640px) { .row.two { grid-template-columns: 1fr 1fr; } }
+  .field { display: grid; gap: 8px; min-width: 0; }
+  .field label { font-size: 12px; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: #e9e5e3; }
+  .field label small { text-transform: none; letter-spacing: 0; font-weight: 400; color: #a8a2a0; font-size: 13px; }
+  input, select, textarea {
+    width: 100%; font-family: var(--body); font-size: 17px; color: var(--black); background: var(--white);
+    border: 0; border-radius: 0; padding: 15px 16px; min-height: 52px;
+  }
+  textarea { min-height: 110px; resize: vertical; }
+  .hp { position: absolute; left: -9999px; height: 0; overflow: hidden; }
+  .note { font-size: 14px; color: #a8a2a0; margin: 0; }
+  .status { padding: 18px 20px; font-weight: 600; display: none; }
+  .status.ok { display: block; background: var(--white); color: var(--black); border-left: 6px solid var(--gold); }
+  .status.err { display: block; background: var(--white); color: #8a1c1c; border-left: 6px solid #8a1c1c; }
+  .btn[disabled] { opacity: .6; cursor: wait; }
+
+  /* FAQ + FOOTER */
+  .faq details { border-bottom: 1px solid var(--line); padding: 18px 0; }
+  .faq details:first-of-type { border-top: 1px solid var(--black); }
+  .faq summary { cursor: pointer; font-family: var(--display); font-weight: 700; font-size: 1.25rem; list-style-position: outside; }
+  .faq p { margin: 12px 0 0; color: var(--gray); max-width: 38rem; }
+  footer { background: var(--black); color: #cfc9c7; padding-block: 40px; font-size: 15px; border-top: 1px solid #2a2a2a; }
+  footer .brand { font-family: var(--display); color: var(--white); font-size: 1.4rem; font-weight: 700; display: block; margin-bottom: 6px; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="top">
+      <span class="label">GorJess Studios</span>
+      <a class="nav" href="#signup">Sign up</a>
+    </div>
+    <div class="hero-grid">
+    <div class="hero-copy">
+    <h1>Spotlight <em>Saturdays</em></h1>
+    <hr class="rule">
+    <p class="lede">A community series at GorJess Studios that puts local businesses front and center, so more people in Walls and the surrounding area meet the talent right down the road.</p>
+    <div class="meta">
+      <div><span>Launches</span><strong>Saturday, Oct 31</strong></div>
+      <div><span>Where</span><strong>GorJess Studios</strong></div>
+      <div><span>Address</span><strong>7011 Goodman Rd, Ste 102<br>Walls, MS</strong></div>
+    </div>
+    <a class="btn" href="#signup">Feature my business</a>
+    </div>
+    <figure class="flyer">
+      <img src="spotlight-flyer.jpg" width="1080" height="1350" alt="Spotlight Saturdays flyer: a community series for local businesses at GorJess Studios in Walls, MS. Dates: Oct 31, Nov 14, Nov 28, Dec 12, Dec 19.">
+    </figure>
+    </div>
+  </div>
+</header>
+
+<section class="pad">
+  <div class="wrap intro">
+    <div>
+      <span class="label">The idea</span>
+      <h2>One Saturday. One business. Your people show up.</h2>
+      <p>Spotlight Saturdays exists to amplify community talent and help local businesses grow. Each Saturday, featured businesses get a space in the studio, the promotion, and the crowd.</p>
+      <p>We spotlight a business on select Saturdays from October 31 through December 19, so every feature gets real attention.</p>
+      <p>If you sell a product, offer a service, or run something you built from nothing, this is your stage.</p>
+    </div>
+    <ul class="gets">
+      <li><strong>Your own space</strong><span>A dedicated space inside the studio to show what you do.</span></li>
+      <li><strong>Promotion before and after</strong><span>Your business gets featured across GorJess Studios channels.</span></li>
+      <li><strong>Face to face with customers</strong><span>Meet new people in person and leave with real connections.</span></li>
+    </ul>
+  </div>
+</section>
+
+<section class="pad how">
+  <div class="wrap">
+    <span class="label">How it works</span>
+    <h2>Three steps. The first takes about a minute.</h2>
+    <ol class="steps">
+      <li><strong>Sign up</strong><span>Tell us about your business and which Saturday you want.</span></li>
+      <li><strong>We confirm your date</strong><span>We reach out to lock in your Saturday and go over the details.</span></li>
+      <li><strong>Show up and shine</strong><span>Bring your best. We help spread the word.</span></li>
+    </ol>
+  </div>
+</section>
+
+<section class="pad signup" id="signup">
+  <div class="wrap">
+    <span class="label" style="color:var(--gold)">Sign up</span>
+    <h2>Claim your Saturday</h2>
+    <p class="sub">Six quick questions. We will contact you within a few days to confirm your date.</p>
+
+    <form id="spotForm" novalidate>
+      <div class="hp" aria-hidden="true"><label for="website">Leave this empty</label><input id="website" name="_gotcha" type="text" tabindex="-1" autocomplete="off"></div>
+
+      <div class="row two">
+        <div class="field">
+          <label for="biz">Business name</label>
+          <input id="biz" name="business" type="text" required autocomplete="organization">
+        </div>
+        <div class="field">
+          <label for="owner">Your name</label>
+          <input id="owner" name="owner" type="text" required autocomplete="name">
+        </div>
+      </div>
+
+      <div class="row two">
+        <div class="field">
+          <label for="phone">Phone</label>
+          <input id="phone" name="phone" type="tel" required autocomplete="tel" inputmode="tel">
+        </div>
+        <div class="field">
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" required autocomplete="email">
+        </div>
+      </div>
+
+      <div class="row two">
+        <div class="field">
+          <label for="handle">Instagram or Facebook <small>(optional)</small></label>
+          <input id="handle" name="social" type="text" placeholder="@yourbusiness">
+        </div>
+        <div class="field">
+          <label for="date">Preferred Saturday</label>
+          <select id="date" name="preferred_date" required>
+            <option value="">Choose a date</option>
+            <option>October 31 (launch day)</option>
+            <option>November 14</option>
+            <option>November 28 (Saturday after Thanksgiving)</option>
+            <option>December 12</option>
+            <option>December 19</option>
+            <option>Any date works</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="about">What do you do? <small>(one or two sentences)</small></label>
+        <textarea id="about" name="about" required></textarea>
+      </div>
+
+      <div id="status" class="status" role="status" aria-live="polite"></div>
+      <div><button class="btn" type="submit" id="submitBtn">Submit my business</button></div>
+      <p class="note">We only use your info to contact you about Spotlight Saturdays.</p>
+    </form>
+  </div>
+</section>
+
+<section class="pad faq">
+  <div class="wrap">
+    <span class="label">Questions</span>
+    <h2>Before you sign up</h2>
+    <details><summary>Who can be featured?</summary><p>Any local business, product maker, or service provider. If you are building something in the community, apply.</p></details>
+    <details><summary>Do I need to be a beauty business?</summary><p>No. GorJess Studios is a beauty space, but Spotlight Saturdays is open to all kinds of local businesses.</p></details>
+    <details><summary>What happens after I sign up?</summary><p>We contact you to confirm your Saturday and answer any questions. Nothing is final until we confirm with you.</p></details>
+    <details><summary>Which Saturdays are available?</summary><p>October 31, November 14, November 28, December 12, and December 19.</p></details>
+    <details><summary>Can I pick a different date later?</summary><p>Yes. Just let us know and we will work with you.</p></details>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span class="brand">GorJess Studios</span>
+    7011 Goodman Rd, Suite 102, Walls, MS<br>
+    <a href="https://gorjessstudios.studio">gorjessstudios.studio</a>
+  </div>
+</footer>
+
+<script>
+  // Formspree form URL. Sign-ups are emailed to the Formspree account owner.
+  var FORM_ENDPOINT = "https://formspree.io/f/meaeakeq";
+
+  var form = document.getElementById("spotForm");
+  var statusEl = document.getElementById("status");
+  var btn = document.getElementById("submitBtn");
+
+  function show(kind, msg) { statusEl.className = "status " + kind; statusEl.textContent = msg; }
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    statusEl.className = "status";
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      show("err", "Please fill in every required field.");
+      return;
+    }
+    if (FORM_ENDPOINT.indexOf("PASTE_") === 0) {
+      show("err", "This form is not connected yet. Add the Formspree URL in the page code.");
+      return;
+    }
+    btn.disabled = true; btn.textContent = "Sending...";
+    fetch(FORM_ENDPOINT, {
+      method: "POST",
+      headers: { "Accept": "application/json" },
+      body: new FormData(form)
+    }).then(function (r) {
+      if (!r.ok) throw new Error("bad response");
+      form.reset();
+      show("ok", "You are in. We will contact you soon to confirm your Saturday.");
+      btn.textContent = "Submitted";
+    }).catch(function () {
+      btn.disabled = false; btn.textContent = "Submit my business";
+      show("err", "Something went wrong. Please try again, or contact GorJess Studios directly.");
+    });
+  });
+</script>
+</body>
+</html>
