@@ -94,8 +94,8 @@ nav {
 .section-eyebrow { font-size: 11px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; }
 .section-headline { font-family: 'Cormorant Garamond', serif; font-size: 40px; font-weight: 300; line-height: 1.15; color: var(--black); margin-bottom: 0.75rem; }
 .section-sub { font-size: 14px; font-weight: 300; color: var(--mid); line-height: 1.7; margin-bottom: 3rem; max-width: 520px; }
-.rental-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-.rental-card { background: var(--warm-white); border: 1px solid var(--border); padding: 2.5rem 2rem; position: relative; }
+.rental-cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+.rental-card { background: var(--warm-white); border: 1px solid var(--border); padding: 2.5rem 1.75rem; position: relative; display: flex; flex-direction: column; }
 .rental-card.featured { border-color: var(--gold); }
 .rental-badge { position: absolute; top: -1px; right: 2rem; background: var(--gold); color: var(--warm-white); font-size: 10px; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; padding: 4px 12px; }
 .rental-type { font-size: 11px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.75rem; }
@@ -106,7 +106,7 @@ nav {
 .rental-features { list-style: none; display: flex; flex-direction: column; gap: 8px; margin-bottom: 2rem; }
 .rental-features li { display: flex; align-items: center; gap: 10px; font-size: 13px; color: var(--mid); }
 .rental-features li::before { content: ''; display: block; width: 16px; height: 1px; background: var(--gold); flex-shrink: 0; }
-.rental-cta { display: block; text-align: center; padding: 13px 20px; font-family: 'Jost', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; text-decoration: none; transition: all 0.2s; }
+.rental-cta { display: block; margin-top: auto; text-align: center; padding: 13px 20px; font-family: 'Jost', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; text-decoration: none; transition: all 0.2s; }
 .rental-cta.dark { background: var(--black); color: var(--warm-white); }
 .rental-cta.dark:hover { opacity: 0.82; }
 .rental-cta.pink { background: var(--pink); color: #fff; }
@@ -158,6 +158,7 @@ footer { background: #080808; padding: 2.5rem 2rem; display: flex; justify-conte
 .pink-rule { width: 100%; height: 2px; background: var(--pink); }
 
 /* RESPONSIVE */
+@media (max-width: 900px) { .rental-cards { grid-template-columns: 1fr; } }
 @media (max-width: 768px) {
   .nav-links { display: none; }
   .nav-mobile-btn { display: block; }
@@ -256,7 +257,7 @@ footer { background: #080808; padding: 2.5rem 2rem; display: flex; justify-conte
 <li><a href="directory.html">Our Pros</a></li>
 <li><a href="spotlight.html">Spotlight Saturdays</a></li>
   </ul>
-  <a class="nav-cta" href="#daily">Book a Day</a>
+  <a class="nav-cta" href="daily.html#book">Book a Day</a>
   <button class="nav-mobile-btn" onclick="document.getElementById('mobileNavPanel').classList.toggle('open')">&#9776;</button>
 </nav>
 <div class="nav-mobile-panel" id="mobileNavPanel">
@@ -266,7 +267,7 @@ footer { background: #080808; padding: 2.5rem 2rem; display: flex; justify-conte
   <a href="#faq" onclick="document.getElementById('mobileNavPanel').classList.remove('open')">FAQ</a>
   <a href="directory.html">Our Pros</a>
   <a href="spotlight.html">Spotlight Saturdays</a>
-  <a href="#daily">Book a Day</a>
+  <a href="daily.html#book">Book a Day</a>
 </div>
 
 <!-- HERO -->
@@ -281,7 +282,7 @@ footer { background: #080808; padding: 2.5rem 2rem; display: flex; justify-conte
     <p class="hero-sub">A professional space for beauty pros ready to serve clients, grow their brand and operate their business without the overhead of opening an entire salon.</p>
     <div class="hero-btns">
       <a class="btn-pink" href="apply.html">Apply for Your Space</a>
-      <a class="btn-outline" href="#daily">Book a Day</a>
+      <a class="btn-outline" href="daily.html#book">Book a Day</a>
     </div>
     <div class="hero-stats">
       <div>
@@ -289,7 +290,7 @@ footer { background: #080808; padding: 2.5rem 2rem; display: flex; justify-conte
         <div class="hero-stat-label">Weekly Spaces</div>
       </div>
       <div>
-        <div class="hero-stat-num">$35</div>
+        <div class="hero-stat-num">$25</div>
         <div class="hero-stat-label">Daily Rentals From</div>
       </div>
     </div>
@@ -401,6 +402,19 @@ footer { background: #080808; padding: 2.5rem 2rem; display: flex; justify-conte
 
       <div class="rental-card">
         <div class="rental-type">Flexible</div>
+        <div class="rental-name">Daily MUA Booth</div>
+        <div class="rental-price">$25 <span>/ day</span></div>
+        <p class="rental-desc">7:00 AM to 9:00 PM. Payment is required to secure a daily reservation.</p>
+        <ul class="rental-features">
+          <li>7:00 AM - 9:00 PM access</li>
+          <li>MUA station for the day</li>
+          <li>WiFi included</li>
+        </ul>
+        <a class="rental-cta dark" href="daily.html#book">Book a Day</a>
+      </div>
+
+      <div class="rental-card">
+        <div class="rental-type">Flexible</div>
         <div class="rental-name">Daily Booth</div>
         <div class="rental-price">$35 <span>/ day</span></div>
         <p class="rental-desc">7:00 AM to 9:00 PM. Payment is required to secure a daily reservation.</p>
@@ -410,7 +424,7 @@ footer { background: #080808; padding: 2.5rem 2rem; display: flex; justify-conte
           <li>Shampoo bowl access where applicable</li>
           <li>WiFi included</li>
         </ul>
-        <a class="rental-cta dark" href="https://sogorjessstudios.as.me/?appointmentType=96187471">Book a Day</a>
+        <a class="rental-cta dark" href="daily.html#book">Book a Day</a>
       </div>
 
       <div class="rental-card">
@@ -420,11 +434,11 @@ footer { background: #080808; padding: 2.5rem 2rem; display: flex; justify-conte
         <p class="rental-desc">7:00 AM to 9:00 PM. Payment is required to secure a daily reservation.</p>
         <ul class="rental-features">
           <li>7:00 AM - 9:00 PM access</li>
-          <li>Enclosed private workspace</li>
+          <li>Room with its own door</li>
           <li>WiFi included</li>
           <li>Applicable shared amenities</li>
         </ul>
-        <a class="rental-cta dark" href="https://sogorjessstudios.as.me/?appointmentType=97711133">Book a Day</a>
+        <a class="rental-cta dark" href="daily.html#book">Book a Day</a>
       </div>
 
     </div>
@@ -482,7 +496,7 @@ footer { background: #080808; padding: 2.5rem 2rem; display: flex; justify-conte
         <p class="step-body">Bring your clients, your tools and your brand.</p>
       </div>
     </div>
-    <div class="daily-path"><strong>Booking a day instead?</strong> Choose your date &rarr; Select booth or suite &rarr; Complete booking &rarr; Pay &rarr; Show up and work.</div>
+    <div class="daily-path"><strong>Booking a day instead?</strong> Choose your date &rarr; Select MUA booth, booth or suite &rarr; Complete booking &rarr; Pay &rarr; Show up and work.</div>
   </div>
 </section>
 
@@ -524,7 +538,7 @@ footer { background: #080808; padding: 2.5rem 2rem; display: flex; justify-conte
     </div>
     <div class="faq-item">
       <button class="faq-q" onclick="toggle(this)">Do you offer daily rentals? <span class="faq-chevron">&#8964;</span></button>
-      <div class="faq-a">Yes. Booth rentals are $35/day and suites are $50/day.</div>
+      <div class="faq-a">Yes. MUA booth rentals are $25/day, booth rentals are $35/day and suites are $50/day.</div>
     </div>
     <div class="faq-item">
       <button class="faq-q" onclick="toggle(this)">What are daily rental hours? <span class="faq-chevron">&#8964;</span></button>
@@ -589,7 +603,7 @@ footer { background: #080808; padding: 2.5rem 2rem; display: flex; justify-conte
   <div class="cta-btns">
     <a class="btn-pink" href="apply.html">Apply for Your Space</a>
   </div>
-  <p style="margin-top:1.5rem;"><a href="#daily" style="color:#888; font-size:12px; letter-spacing:0.05em; text-decoration:underline;">Need it for one day? Book a Daily Rental</a></p>
+  <p style="margin-top:1.5rem;"><a href="daily.html#book" style="color:#888; font-size:12px; letter-spacing:0.05em; text-decoration:underline;">Need it for one day? Book a Daily Rental</a></p>
 </section>
 
 <!-- FOOTER -->

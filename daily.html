@@ -1,0 +1,306 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Daily Rentals | GorJess Studios</title>
+<meta name="description" content="Book a booth, suite or MUA station at GorJess Studios by the day. No contract, no commitment.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* Same system as the main GorJess Studios site: cream ground, hairline gold, light Cormorant headlines, Jost labels, square buttons, black bands. */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --cream: #F2EDE4; --black: #0E0E0E; --gold: #B89A5A; --gold-light: #D4B97A; --gold-pale: #F0E8D4;
+  --warm-white: #FAF8F4; --mid: #6B6560; --border: #DDD5C4; --pink: #D5266D;
+  color-scheme: light;
+}
+html { scroll-behavior: smooth; }
+body { background: var(--cream); color: var(--black); font-family: 'Jost', sans-serif; }
+img { max-width: 100%; display: block; }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+
+/* NAV */
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: var(--cream); border-bottom: 1px solid var(--border); padding: 0 2rem; height: 64px; display: flex; align-items: center; justify-content: space-between; }
+.nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 300; letter-spacing: 0.1em; color: var(--black); text-decoration: none; }
+.nav-logo span { color: var(--gold); }
+.nav-links { display: flex; gap: 2rem; list-style: none; }
+.nav-links a { font-size: 11px; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--mid); text-decoration: none; transition: color 0.2s; }
+.nav-links a:hover { color: var(--black); }
+.nav-cta { font-size: 11px; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; background: var(--pink); color: #fff; padding: 9px 18px; text-decoration: none; transition: opacity 0.2s; }
+.nav-cta:hover { opacity: 0.88; }
+.nav-mobile-btn { display: none; background: none; border: none; cursor: pointer; font-size: 22px; color: var(--black); }
+.nav-mobile-panel { display: none; flex-direction: column; background: #fff; position: fixed; top: 64px; left: 0; right: 0; padding: 10px 24px 20px; box-shadow: 0 12px 24px rgba(0,0,0,0.08); z-index: 100; }
+.nav-mobile-panel.open { display: flex; }
+.nav-mobile-panel a { font-size: 13px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--black); text-decoration: none; padding: 14px 0; border-bottom: 1px solid #f0ece4; }
+.nav-mobile-panel a:last-child { border-bottom: none; }
+.pink-rule { width: 100%; height: 2px; background: var(--pink); }
+
+/* BUTTONS */
+.btn-black, .btn-outline, .btn-cream, .btn-pink { display: inline-block; font-family: 'Jost', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; text-decoration: none; transition: all 0.2s; text-align: center; }
+.btn-black { padding: 14px 28px; background: var(--black); color: var(--warm-white); }
+.btn-black:hover { opacity: 0.82; }
+.btn-outline { padding: 13px 28px; background: transparent; color: var(--black); border: 1px solid var(--black); }
+.btn-outline:hover { background: var(--black); color: var(--warm-white); }
+.btn-cream { padding: 14px 28px; background: var(--warm-white); color: var(--black); }
+.btn-cream:hover { opacity: 0.88; }
+.btn-pink { padding: 14px 28px; background: var(--pink); color: #fff; }
+.btn-pink:hover { opacity: 0.88; }
+
+/* HERO */
+.hero { padding-top: 64px; }
+.hero-inner { max-width: 900px; margin: 0 auto; padding: 5rem 2rem 4rem; }
+.hero-eyebrow { font-size: 11px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.5rem; display: flex; align-items: center; gap: 12px; }
+.hero-eyebrow::before { content: ''; display: block; width: 32px; height: 1px; background: var(--gold); }
+.hero-headline { font-family: 'Cormorant Garamond', serif; font-size: clamp(48px, 8vw, 88px); font-weight: 300; line-height: 1.02; letter-spacing: 0.02em; color: var(--black); margin-bottom: 2rem; }
+.hero-headline em { font-style: italic; color: var(--gold); }
+.hero-sub { font-size: 15px; font-weight: 300; line-height: 1.8; color: var(--mid); max-width: 500px; margin-bottom: 2.5rem; }
+.hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+.hero-stats { display: flex; gap: 3rem; margin-top: 4rem; padding-top: 2.5rem; border-top: 1px solid var(--border); flex-wrap: wrap; }
+.hero-stat-num { font-family: 'Cormorant Garamond', serif; font-size: 36px; font-weight: 300; color: var(--black); line-height: 1; }
+.hero-stat-num span { color: var(--pink); }
+.hero-stat-label { font-size: 11px; font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase; color: var(--mid); margin-top: 4px; }
+
+/* GALLERY */
+.gallery { padding: 0 2rem 4rem; background: var(--cream); }
+.gallery-inner { max-width: 1100px; margin: 0 auto; }
+.gallery-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr; grid-template-rows: 380px; gap: 12px; }
+.gallery-grid img { width: 100%; height: 100%; min-height: 0; object-fit: cover; }
+
+/* SECTIONS */
+.section-eyebrow { font-size: 11px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; }
+.section-headline { font-family: 'Cormorant Garamond', serif; font-size: 40px; font-weight: 300; line-height: 1.15; color: var(--black); margin-bottom: 0.75rem; }
+.section-headline em { font-style: italic; color: var(--gold); }
+.section-sub { font-size: 14px; font-weight: 300; color: var(--mid); line-height: 1.7; margin-bottom: 3rem; max-width: 520px; }
+
+/* RENTALS */
+.rentals { padding: 6rem 2rem; background: var(--cream); scroll-margin-top: 64px; }
+.rentals-inner { max-width: 900px; margin: 0 auto; }
+.rental-cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+.rental-card { background: var(--warm-white); border: 1px solid var(--border); padding: 2.25rem 1.75rem; display: flex; flex-direction: column; }
+.rental-type { font-size: 11px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.75rem; }
+.rental-name { font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 400; color: var(--black); margin-bottom: 0.5rem; }
+.rental-price { font-family: 'Cormorant Garamond', serif; font-size: 44px; font-weight: 300; color: var(--black); line-height: 1; margin: 1rem 0 0.25rem; }
+.rental-price span { font-size: 16px; font-weight: 300; color: var(--mid); }
+.rental-desc { font-size: 13px; font-weight: 300; color: var(--mid); line-height: 1.7; margin: 1rem 0 1.5rem; }
+.rental-features { list-style: none; display: flex; flex-direction: column; gap: 8px; margin-bottom: 2rem; }
+.rental-features li { display: flex; align-items: flex-start; gap: 10px; font-size: 13px; color: var(--mid); line-height: 1.5; }
+.rental-features li::before { content: ''; display: block; width: 16px; height: 1px; background: var(--gold); flex-shrink: 0; margin-top: 0.7em; }
+.rental-cta { display: block; margin-top: auto; text-align: center; padding: 13px 20px; font-size: 11px; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; text-decoration: none; background: var(--black); color: var(--warm-white); transition: opacity 0.2s; }
+.rental-cta:hover { opacity: 0.82; }
+.daily-path { margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--border); text-align: center; font-size: 13px; color: var(--mid); letter-spacing: 0.02em; line-height: 1.7; }
+.daily-path strong { color: var(--black); font-weight: 500; }
+
+/* PROCESS */
+.process { background: var(--gold-pale); padding: 6rem 2rem; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.process-inner { max-width: 900px; margin: 0 auto; }
+.process-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 3rem; }
+.step-num { font-family: 'Cormorant Garamond', serif; font-size: 52px; font-weight: 300; color: var(--gold); line-height: 1; margin-bottom: 1rem; }
+.step-title { font-size: 13px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--black); margin-bottom: 8px; }
+.step-body { font-size: 13px; font-weight: 300; color: var(--mid); line-height: 1.7; }
+
+/* EXPERIENCE (what a daily rental means) */
+.experience { background: var(--black); padding: 6rem 2rem; }
+.experience-inner { max-width: 900px; margin: 0 auto; }
+.experience .section-headline { color: var(--warm-white); }
+.experience .section-headline em { color: var(--gold-light); }
+.experience-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 2.5rem; }
+.experience-card { background: #1a1a1a; border: 1px solid #2a2a2a; padding: 2rem 1.75rem; }
+.experience-card h3 { font-family: 'Cormorant Garamond', serif; font-size: 21px; font-weight: 400; color: var(--warm-white); margin-bottom: 0.5rem; }
+.experience-card p { font-size: 13px; font-weight: 300; color: #999; line-height: 1.7; }
+
+/* CTA + FOOTER */
+.cta-section { background: var(--black); padding: 6rem 2rem; text-align: center; border-top: 1px solid #1a1a1a; }
+.cta-eyebrow { font-size: 11px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.25rem; }
+.cta-headline { font-family: 'Cormorant Garamond', serif; font-size: clamp(36px, 5vw, 58px); font-weight: 300; color: var(--warm-white); margin-bottom: 1rem; line-height: 1.1; }
+.cta-headline em { font-style: italic; color: var(--gold-light); }
+.cta-sub { font-size: 14px; font-weight: 300; color: #888; margin: 0 auto 2.5rem; line-height: 1.7; max-width: 440px; }
+.cta-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+.cta-addr { margin-top: 2.5rem; font-size: 12px; font-weight: 300; color: #666; letter-spacing: 0.08em; }
+footer { background: #080808; padding: 2.5rem 2rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; border-top: 1px solid #1a1a1a; }
+.footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 18px; font-weight: 300; letter-spacing: 0.1em; color: var(--warm-white); }
+.footer-logo span { color: var(--gold); }
+.footer-loc { font-size: 12px; font-weight: 300; color: #555; letter-spacing: 0.08em; margin-top: 4px; }
+.footer-links { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+.footer-links a { font-size: 11px; font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase; color: #555; text-decoration: none; transition: color 0.2s; }
+.footer-links a:hover { color: var(--gold); }
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .rental-cards { grid-template-columns: 1fr; }
+}
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .nav-mobile-btn { display: block; }
+  .experience-grid { grid-template-columns: 1fr; }
+  .process-steps { grid-template-columns: 1fr; gap: 2.25rem; }
+  .gallery-grid { grid-template-columns: 1fr 1fr; grid-template-rows: 200px 200px; }
+  .gallery-grid .g-wide { grid-column: 1 / -1; }
+  .hero-stats { gap: 2rem; }
+}
+@media (max-width: 420px) {
+  nav { padding: 0 1rem; }
+  .nav-logo { font-size: 19px; }
+  .nav-cta { padding: 9px 12px; }
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; } }
+</style>
+</head>
+<body>
+<div class="pink-rule"></div>
+
+<nav>
+  <a class="nav-logo" href="index.html">GorJess <span>Studios</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="index.html#rentals">Rentals</a></li>
+    <li><a href="index.html#process">How It Works</a></li>
+    <li><a href="index.html#faq">FAQ</a></li>
+    <li><a href="directory.html">Our Pros</a></li>
+    <li><a href="spotlight.html">Spotlight Saturdays</a></li>
+  </ul>
+  <a class="nav-cta" href="#book">Book a Day</a>
+  <button class="nav-mobile-btn" aria-label="Menu" onclick="document.getElementById('mobileNavPanel').classList.toggle('open')">&#9776;</button>
+</nav>
+<div class="nav-mobile-panel" id="mobileNavPanel">
+  <a href="index.html#about">About</a>
+  <a href="index.html#rentals">Rentals</a>
+  <a href="index.html#process">How It Works</a>
+  <a href="index.html#faq">FAQ</a>
+  <a href="directory.html">Our Pros</a>
+  <a href="spotlight.html">Spotlight Saturdays</a>
+</div>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">Daily Rentals</div>
+    <h1 class="hero-headline">Work here <em>for the day.</em></h1>
+    <p class="hero-sub">No contract. No commitment. Book a booth, suite or MUA station only for the days you need it, bring your own clients and products, and walk out with your full bag.</p>
+    <div class="hero-btns">
+      <a class="btn-black" href="https://sogorjessstudios.as.me/schedule/27f2245f/category/STUDIO%2520RENTAL/appointment/94867742/calendar/13803343" target="_blank" rel="noopener">Book an MUA Booth</a>
+      <a class="btn-outline" href="https://sogorjessstudios.as.me/schedule/27f2245f/appointment/96187471/calendar/13803343?appointmentTypeIds[]=96187471" target="_blank" rel="noopener">Book a Booth</a>
+      <a class="btn-outline" href="https://sogorjessstudios.as.me/schedule/27f2245f/appointment/97711133/calendar/13803343?appointmentTypeIds[]=97711133" target="_blank" rel="noopener">Book a Suite</a>
+    </div>
+    <div class="hero-stats">
+      <div><div class="hero-stat-num"><span>$</span>25</div><div class="hero-stat-label">Daily rentals from</div></div>
+      <div><div class="hero-stat-num">7<span>am</span> to 9<span>pm</span></div><div class="hero-stat-label">Access on your day</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="gallery">
+  <div class="gallery-inner">
+    <div class="gallery-grid">
+      <img class="g-wide" src="studio-floor.jpg" alt="The GorJess Studios salon floor with booths, mirrors and a pink and black geometric accent wall">
+      <img src="booth-vanity.jpg" alt="A booth with a black salon chair, wall-mounted station and oval mirror">
+      <img src="private-suite.jpg" alt="A suite with a salon chair, a plant and pink trim against light walls">
+    </div>
+  </div>
+</section>
+
+<section class="rentals" id="book">
+  <div class="rentals-inner">
+    <div class="section-eyebrow">Choose Your Space</div>
+    <h2 class="section-headline">Book the days <em>you need.</em></h2>
+    <p class="section-sub">Pay when you book. Your space is yours from 7:00 AM to 9:00 PM on the day you reserve.</p>
+    <div class="rental-cards">
+
+      <div class="rental-card">
+        <div class="rental-type">MUA</div>
+        <div class="rental-name">Daily MUA Booth</div>
+        <div class="rental-price">$25 <span>/ day</span></div>
+        <p class="rental-desc">Reserve your MUA station for the day. Payment is required to secure a daily reservation.</p>
+        <ul class="rental-features">
+          <li>7:00 AM - 9:00 PM access</li>
+          <li>MUA station for the day</li>
+          <li>WiFi included</li>
+        </ul>
+        <a class="rental-cta" href="https://sogorjessstudios.as.me/schedule/27f2245f/category/STUDIO%2520RENTAL/appointment/94867742/calendar/13803343" target="_blank" rel="noopener">Book a Day</a>
+      </div>
+
+      <div class="rental-card">
+        <div class="rental-type">Stylist</div>
+        <div class="rental-name">Daily Booth</div>
+        <div class="rental-price">$35 <span>/ day</span></div>
+        <p class="rental-desc">A station on the open salon floor. Payment is required to secure a daily reservation.</p>
+        <ul class="rental-features">
+          <li>7:00 AM - 9:00 PM access</li>
+          <li>Chair / station access</li>
+          <li>Shampoo bowl access where applicable</li>
+          <li>WiFi included</li>
+        </ul>
+        <a class="rental-cta" href="https://sogorjessstudios.as.me/schedule/27f2245f/appointment/96187471/calendar/13803343?appointmentTypeIds[]=96187471" target="_blank" rel="noopener">Book a Day</a>
+      </div>
+
+      <div class="rental-card">
+        <div class="rental-type">Stylist</div>
+        <div class="rental-name">Daily Suite</div>
+        <div class="rental-price">$50 <span>/ day</span></div>
+        <p class="rental-desc">A room with its own door. Payment is required to secure a daily reservation.</p>
+        <ul class="rental-features">
+          <li>7:00 AM - 9:00 PM access</li>
+          <li>Beauty bed and salon chair</li>
+          <li>Rolling workstation and full-length mirror</li>
+          <li>WiFi included</li>
+        </ul>
+        <a class="rental-cta" href="https://sogorjessstudios.as.me/schedule/27f2245f/appointment/97711133/calendar/13803343?appointmentTypeIds[]=97711133" target="_blank" rel="noopener">Book a Day</a>
+      </div>
+
+    </div>
+    <p class="daily-path"><strong>Good to know:</strong> Suites have a door and walls but are not soundproof, and booths sit on the open salon floor. Come tour first if sound matters for your service.</p>
+  </div>
+</section>
+
+<section class="process">
+  <div class="process-inner">
+    <div class="section-eyebrow">How It Works</div>
+    <h2 class="section-headline">Book it, work it, <em>leave it clean.</em></h2>
+    <div class="process-steps">
+      <div class="process-step"><div class="step-num">01</div><div class="step-title">Book your day</div><p class="step-body">Pick a space and a date, answer the short intake form and pay at booking.</p></div>
+      <div class="process-step"><div class="step-num">02</div><div class="step-title">Show up and work</div><p class="step-body">Your space is yours from 7:00 AM to 9:00 PM. Bring your clients, your products and your tools.</p></div>
+      <div class="process-step"><div class="step-num">03</div><div class="step-title">Clean up and go</div><p class="step-body">Wipe down, sanitize and take out your trash. Take all your things with you.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="experience">
+  <div class="experience-inner">
+    <div class="section-eyebrow">Before You Book</div>
+    <h2 class="section-headline">What a daily rental <em>means.</em></h2>
+    <div class="experience-grid">
+      <div class="experience-card"><h3>Bring your own supplies</h3><p>Products, tools and anything else you use for your services come with you.</p></div>
+      <div class="experience-card"><h3>Your clients, your schedule</h3><p>You book and collect from your own clients. The studio is mostly appointment based, so plan to bring your own.</p></div>
+      <div class="experience-card"><h3>Leave it clean</h3><p>Nothing stays at the station after your day ends. Sanitize and clean up before you leave.</p></div>
+      <div class="experience-card"><h3>Licensed where required</h3><p>You will enter your license information when you book.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <div class="cta-eyebrow">Limited Days Available</div>
+  <h2 class="cta-headline">Pick your <em>day.</em></h2>
+  <p class="cta-sub">Made for hair stylists, braiders, lash techs, MUAs, estheticians, brow artists and more.</p>
+  <div class="cta-btns">
+    <a class="btn-pink" href="#book">Book a Day</a>
+    <a class="btn-cream" href="apply.html">Apply for a Weekly Space</a>
+  </div>
+  <p class="cta-addr">7011 Goodman Rd, Suite 102, Walls, MS 38680</p>
+</section>
+
+<footer>
+  <div>
+    <div class="footer-logo">GorJess <span>Studios</span></div>
+    <div class="footer-loc">Walls, Mississippi</div>
+  </div>
+  <div class="footer-links">
+    <a href="index.html#about">About</a>
+    <a href="index.html#rentals">Rentals</a>
+    <a href="index.html#faq">FAQ</a>
+    <a href="spotlight.html">Spotlight Saturdays</a>
+    <a href="#">Instagram</a>
+  </div>
+</footer>
+<div class="pink-rule"></div>
+</body>
+</html>
