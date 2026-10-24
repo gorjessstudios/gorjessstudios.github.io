@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GorJess Studios | FAQ</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500;600&family=Great+Vibes&display=swap');
+
+  :root{
+    --black:#000000;
+    --white:#ffffff;
+    --cream:#F5F2EB;
+    --gold:#BEA262;
+    --pink:#D5266D;
+    --text-secondary:#5a5a56;
+    --border:#e2ddd0;
+    --radius:2px;
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0;}
+
+  body{
+    background:var(--cream);
+    font-family:'Jost',sans-serif;
+    color:var(--black);
+    line-height:1.6;
+    padding:0 0 80px;
+  }
+
+  .wrap{max-width:640px;margin:0 auto;padding:0 20px;}
+
+  /* HERO */
+  .hero{
+    background:var(--black);
+    color:var(--white);
+    text-align:center;
+    padding:84px 20px 76px;
+    position:relative;
+    background-image:radial-gradient(ellipse at 50% 0%, rgba(213,38,109,.28), transparent 62%);
+  }
+  .hero::after{
+    content:"";
+    position:absolute;
+    bottom:0;left:50%;
+    transform:translateX(-50%);
+    width:80px;height:2px;
+    background:var(--gold);
+  }
+  .studio-tagline{
+    font-size:11px;
+    letter-spacing:0.28em;
+    text-transform:uppercase;
+    color:var(--gold);
+  }
+  .studio-name{
+    font-family:'Cormorant Garamond',serif;
+    font-size:54px;
+    line-height:1.05;
+    font-weight:500;
+    letter-spacing:0.03em;
+    margin-top:14px;
+  }
+  .hero-sub{
+    font-family:'Cormorant Garamond',serif;
+    font-style:italic;
+    font-size:22px;
+    color:#e9e5da;
+    margin-top:18px;
+  }
+  .studio-loc{
+    font-size:12px;
+    color:#b8b8b3;
+    letter-spacing:0.08em;
+    margin-top:10px;
+  }
+  .hero-btn{
+    display:inline-block;
+    margin-top:30px;
+    padding:14px 30px;
+    background:var(--pink);
+    color:var(--white);
+    font-size:12px;
+    letter-spacing:0.16em;
+    text-transform:uppercase;
+    text-decoration:none;
+    border-radius:var(--radius);
+  }
+  @media(max-width:520px){
+    .hero{padding:64px 20px 58px;}
+    .studio-name{font-size:40px;}
+    .hero-sub{font-size:19px;}
+  }
+
+  /* INTRO */
+  .intro{padding:44px 0 8px;}
+  .intro h1{
+    font-family:'Cormorant Garamond',serif;
+    font-size:30px;
+    font-weight:500;
+    margin-bottom:12px;
+  }
+  .intro p{
+    font-size:14px;
+    color:var(--text-secondary);
+    max-width:540px;
+  }
+  .pill-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px;}
+  .pill{
+    font-size:11px;
+    letter-spacing:0.04em;
+    border:1px solid var(--border);
+    background:var(--white);
+    padding:7px 14px;
+    border-radius:20px;
+    color:var(--black);
+  }
+  .pill strong{color:var(--pink);}
+
+  .steps{
+    margin-top:24px;
+    background:var(--white);
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+    padding:18px 20px;
+  }
+  .steps-title{font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:var(--gold);margin-bottom:10px;}
+  .steps ol{padding-left:18px;}
+  .steps li{font-size:13px;color:var(--text-secondary);margin-bottom:4px;}
+
+  .faq{margin-top:22px;}
+  .faq-title{font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:var(--gold);margin-bottom:10px;}
+  .faq details{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);margin-bottom:8px;padding:0 16px;}
+  .faq summary{cursor:pointer;font-size:13.5px;font-weight:500;padding:13px 0;list-style:none;display:flex;justify-content:space-between;gap:12px;}
+  .faq summary::-webkit-details-marker{display:none;}
+  .faq summary::after{content:"+";color:var(--gold);font-size:18px;line-height:1;}
+  .faq details[open] summary::after{content:"\2212";}
+  .faq-link{display:inline-block;margin-top:6px;font-size:12px;letter-spacing:0.12em;text-transform:uppercase;color:var(--pink);text-decoration:none;border-bottom:1px solid var(--pink);padding-bottom:2px;}
+  .faq details p{font-size:13px;color:var(--text-secondary);padding:0 0 14px;}
+
+  .promo-banner{
+    margin-top:22px;
+    background:var(--black);
+    color:var(--white);
+    padding:22px 22px 20px;
+    border-radius:var(--radius);
+    border-left:3px solid var(--gold);
+  }
+  .promo-title{
+    font-family:'Cormorant Garamond',serif;
+    font-size:19px;
+    color:var(--gold);
+    letter-spacing:0.02em;
+  }
+  .promo-text{
+    font-size:13px;
+    color:#d8d8d3;
+    margin-top:8px;
+    line-height:1.6;
+    max-width:460px;
+  }
+
+  /* SECTION LABEL */
+  .sec{margin-top:44px;}
+  .sec-num{
+    font-family:'Cormorant Garamond',serif;
+    font-style:italic;
+    color:var(--gold);
+    font-size:13px;
+    letter-spacing:0.1em;
+  }
+  .sec-title{
+    font-size:19px;
+    font-weight:500;
+    margin-top:2px;
+    margin-bottom:6px;
+  }
+  .sec-sub{font-size:13px;color:var(--text-secondary);margin-bottom:18px;}
+  hr.divider{border:none;border-top:1px solid var(--border);margin:44px 0 0;}
+
+  /* SPACE CARDS */
+  .space-cards{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+  @media(max-width:520px){.space-cards{grid-template-columns:1fr;}}
+  .space-card{
+    background:var(--white);
+    border:1.5px solid var(--border);
+    border-radius:var(--radius);
+    padding:20px 18px;
+    cursor:pointer;
+    transition:border-color .15s;
+    position:relative;
+  }
+  .space-card input{position:absolute;opacity:0;}
+  .space-card.selected{border-color:var(--black);}
+  .space-card.selected::before{
+    content:"✓";
+    position:absolute;top:14px;right:14px;
+    width:18px;height:18px;
+    background:var(--black);color:var(--white);
+    font-size:10px;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .sc-label{font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);}
+  .sc-name{font-family:'Cormorant Garamond',serif;font-size:24px;margin:6px 0 2px;}
+  .sc-rate{font-size:14px;color:var(--black);}
+  .sc-rate span{color:var(--text-secondary);font-size:12px;}
+  .sc-total{font-size:11px;color:var(--text-secondary);margin-top:8px;}
+
+  /* FORM ELEMENTS */
+  .field{margin-bottom:20px;}
+  .field label{
+    display:block;
+    font-size:12px;
+    letter-spacing:0.03em;
+    color:var(--black);
+    margin-bottom:7px;
+    font-weight:500;
+  }
+  .field .hint{font-weight:400;color:var(--text-secondary);font-size:11.5px;display:block;margin-top:3px;}
+  input[type="text"],input[type="tel"],input[type="email"],input[type="number"],select,textarea{
+    width:100%;
+    padding:12px 14px;
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+    background:var(--white);
+    font-family:'Jost',sans-serif;
+    font-size:14px;
+    color:var(--black);
+  }
+  input:focus,select:focus,textarea:focus{outline:none;border-color:var(--black);}
+  textarea{resize:vertical;min-height:70px;}
+  .row2{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+  @media(max-width:520px){.row2{grid-template-columns:1fr;}}
+  .hidden{display:none;}
+
+  .radio-row{display:flex;gap:10px;flex-wrap:wrap;}
+  .radio-chip{
+    border:1px solid var(--border);
+    background:var(--white);
+    padding:10px 18px;
+    border-radius:20px;
+    font-size:13px;
+    cursor:pointer;
+    position:relative;
+    margin-bottom:0 !important;
+    font-weight:400 !important;
+  }
+  .radio-chip input{position:absolute;opacity:0;}
+  .radio-chip.selected{background:var(--black);color:var(--white);border-color:var(--black);}
+
+  .days-grid{display:flex;gap:6px;flex-wrap:wrap;}
+  .day-chip{
+    width:42px;height:42px;
+    border:1px solid var(--border);
+    background:var(--white);
+    border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    font-size:11px;
+    cursor:pointer;
+    position:relative;
+    margin-bottom:0 !important;
+  }
+  .day-chip input{position:absolute;opacity:0;}
+  .day-chip.selected{background:var(--pink);color:var(--white);border-color:var(--pink);}
+
+  /* AGREEMENT BLOCK */
+  .terms-box{
+    background:var(--white);
+    border:1px solid var(--border);
+    padding:20px;
+    border-radius:var(--radius);
+    margin-top:8px;
+  }
+  .terms-box ul{padding-left:18px;margin-top:8px;}
+  .terms-box li{font-size:12.5px;color:var(--text-secondary);margin-bottom:6px;}
+  .agree-row{display:flex;gap:10px;align-items:flex-start;margin-top:16px;}
+  .agree-row input{margin-top:3px;accent-color:var(--black);width:15px;height:15px;flex-shrink:0;}
+  .agree-row label{font-size:12.5px;color:var(--text-secondary);line-height:1.55;}
+
+  /* SIGNATURE */
+  .sig-field{margin-top:24px;}
+  .sig-field label{display:block;font-size:12px;font-weight:500;margin-bottom:7px;}
+  #signature{
+    font-family:'Great Vibes',cursive;
+    font-size:30px;
+    padding:12px 14px;
+  }
+
+  /* SUBMIT */
+  .submit-btn{
+    width:100%;
+    padding:16px;
+    background:var(--black);
+    color:var(--white);
+    border:none;
+    border-radius:var(--radius);
+    font-family:'Jost',sans-serif;
+    font-size:13px;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    cursor:pointer;
+    margin-top:36px;
+    transition:opacity .15s;
+  }
+  .submit-btn:hover{opacity:0.85;}
+  .submit-note{text-align:center;font-size:11.5px;color:var(--text-secondary);margin-top:12px;}
+
+  /* SUCCESS */
+  .success-box{display:none;text-align:center;padding:80px 20px;}
+  .success-icon{width:52px;height:52px;border-radius:50%;background:var(--black);color:var(--white);display:flex;align-items:center;justify-content:center;font-size:22px;margin:0 auto 20px;}
+  .success-box h2{font-family:'Cormorant Garamond',serif;font-size:26px;margin-bottom:10px;}
+  .success-box p{font-size:13.5px;color:var(--text-secondary);max-width:400px;margin:0 auto;}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="studio-tagline">Made to be noticed.</div>
+  <div class="studio-name">Questions, answered.</div>
+  <div class="hero-sub">Everything to know before you rent at GorJess Studios</div>
+  <div class="studio-loc">Walls, Mississippi</div>
+  <a class="hero-btn" href="apply.html">Start your application</a>
+</div>
+
+<div class="wrap">
+  <div class="intro">
+    <h1>Frequently Asked Questions</h1>
+    <p>Tap a question to see the answer. Still have one that is not here? Ask us when we follow up about your tour.</p>
+    <div class="faq">
+      <details>
+          <summary>What is a booth or suite rental?</summary>
+          <p>It is a professional space where you run your own beauty business, keep your own clients, and set your own prices, without the overhead of opening an entire salon.</p>
+        </details>
+      <details>
+          <summary>How does leasing work?</summary>
+          <p>1. Complete this pre-lease application. 2. We review it and reach out within 48 hours to set up a tour. 3. Tour the studio and decide on a booth or suite. 4. Sign your rental agreement and pay your deposit. 5. Move in.</p>
+        </details>
+      <details>
+          <summary>How long is the lease?</summary>
+          <p>We offer 6 and 12-month leases, billed weekly.</p>
+        </details>
+      <details>
+          <summary>What does the space cost?</summary>
+          <p>Booths and suites are the same price. The 12-month lease is $150 per week and the 6-month lease is $165 per week. Rent is billed weekly and auto-drafted every Saturday by 7:00 PM through Square.</p>
+        </details>
+      <details>
+          <summary>What perks do I get?</summary>
+          <p>Every new approved renter gets the first week for $100. The 12-month lease also locks your rate for the full term and earns 4 free weeks: 1 free week at months 3, 6, 9, and 12. The 6-month lease does not include the free weeks.</p>
+        </details>
+      <details>
+          <summary>What does my rent cover?</summary>
+          <p>Your rent covers your space and the building's utilities. Laundry is not included.</p>
+        </details>
+      <details>
+          <summary>How often is rent due?</summary>
+          <p>Weekly. Rent is auto-drafted through Square every Saturday by 7:00 PM.</p>
+        </details>
+      <details>
+          <summary>What is the difference between a booth and a suite?</summary>
+          <p>Booths are on the open floor and come furnished with a chair, station, and mirror. Suites are unfurnished, and a chair is available on request. Suites have walls but are not fully enclosed or soundproof.</p>
+        </details>
+      <details>
+          <summary>What do I bring?</summary>
+          <p>Your own products, tools, and clients. We provide the space, and the chair, station, and mirror in booths.</p>
+        </details>
+      <details>
+          <summary>Do you get a lot of walk-in traffic?</summary>
+          <p>GorJess Studios is made for beauty professionals who already have clientele, or who have the work ethic to build it. We are not a walk-in heavy space, and we will not promise you bookings. We promote our directory and run community events like Spotlight Saturdays, but your clients are your own.</p>
+        </details>
+      <details>
+          <summary>Is there parking?</summary>
+          <p>Yes. Free parking is available in the lot out front.</p>
+        </details>
+      <details>
+          <summary>What are the studio hours?</summary>
+          <p>Weekly renters have access from 7am to 11pm, so you can work around your own schedule and your clients' schedules.</p>
+        </details>
+      <details>
+          <summary>Do I need insurance?</summary>
+          <p>Yes. All renters are required to carry liability insurance.</p>
+        </details>
+      <details>
+          <summary>Do I need a license?</summary>
+          <p>If your service requires one, we will ask for a copy or proof before you move in. Liability insurance is also required.</p>
+        </details>
+      <details>
+          <summary>What is the deposit?</summary>
+          <p>A $150 security deposit is due at signing and is refundable per the rental agreement.</p>
+        </details>
+      <details>
+          <summary>What if I need to leave early?</summary>
+          <p>Either party can end the agreement with 30 days' written notice. Leaving without 30 days' notice means a $150 early termination fee and a forfeited deposit.</p>
+        </details>
+      <details>
+          <summary>Can I try the space first?</summary>
+          <p>Yes. After your application is reviewed, we will set up a tour and can talk about a trial day.</p>
+        </details>
+    </div>
+    <a class="hero-btn" style="margin-top:28px;" href="apply.html">Apply for your space</a>
+  </div>
+</div>
+
+</body>
+</html>
